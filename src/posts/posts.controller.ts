@@ -23,7 +23,7 @@ export class PostsController {
 
   @Get()
   async findAll() {
-    return this.postsService.findAllPosts();
+    return this.postsFacade.findAllPosts();
   }
 
   @Get(':id')
@@ -40,7 +40,6 @@ export class PostsController {
   @AuthRoles('USER')
   @Post()
   async createPost(@Body() createPostDto: CreatePostDto, @Req() req) {
-    console.log('AAAAA');
     return this.postsFacade.createPost(req.user.user.id, createPostDto);
   }
 }

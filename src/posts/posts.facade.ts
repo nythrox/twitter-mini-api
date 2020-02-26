@@ -28,4 +28,12 @@ export class PostsFacade {
       likes,
     };
   }
+  async findAllPosts(): Promise<PostDto[]> {
+    const posts = await this.postsService.findAllPosts();
+    return Promise.all(posts.map(async post => this.findPost(post.id)));
+  }
+  async findPostsByUserId(id: number): Promise<PostDto[]> {
+    const posts = await this.postsService.findPostsByUserId(id);
+    return Promise.all(posts.map(async post => this.findPost(post.id)));
+  }
 }
