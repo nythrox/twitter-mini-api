@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { KnexModule } from '@nestjsplus/knex';
 import { UsersService } from './users.service';
 import { SqlUsersDao } from './daos/sql-users.dao';
 import { UsersController } from './users.controller';
 import { UsersDao } from './interfaces/users-dao.interface';
+import { PostsModule } from '../posts/posts.module';
 
 @Module({
-  imports: [],
+  imports: [forwardRef(() => PostsModule)],
   controllers: [UsersController],
   providers: [
     {

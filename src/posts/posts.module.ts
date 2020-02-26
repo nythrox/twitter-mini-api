@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { SqlPostsDao } from './sql-posts.dao';
 import { PostsFacade } from './posts.facade';
@@ -8,7 +8,7 @@ import { UsersModule } from '../users/users.module';
 
 @Module({
   controllers: [PostsController],
-  imports: [UsersModule],
+  imports: [forwardRef(() => UsersModule)],
   providers: [
     {
       provide: 'PostsDao',
