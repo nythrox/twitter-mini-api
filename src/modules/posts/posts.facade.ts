@@ -3,7 +3,7 @@ import { CreatePostDto } from './dtos/add-post.dto';
 import { PostsService } from './posts.service';
 import { create } from 'domain';
 import { PostDto } from './dtos/post.dto';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class PostsFacade {

@@ -6,9 +6,9 @@ import {
   JwtModuleAsyncOptions,
   JwtModuleOptions,
 } from '@nestjs/jwt';
+import { UsersModule } from '../users/users.module';
 // import { ConfigService } from '../config/config.service';
 // import { ConfigModule } from '../config/config.module';
-import { UsersModule } from 'src/users/users.module';
 
 // const accessTokenJwtConfigsFactory: JwtModuleAsyncOptions = {
 //   imports: [ConfigModule],

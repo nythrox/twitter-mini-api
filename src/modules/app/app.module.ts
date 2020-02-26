@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { KnexModule } from '@nestjsplus/knex';
-import { SqlModule } from 'src/sql/sql.module';
 import { UsersModule } from '../users/users.module';
 import { AuthModule } from '../auth/auth.module';
 import { PostsModule } from '../posts/posts.module';
+import { MediaModule } from '../media/media.module';
+import { SqlModule } from '../sql/sql.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { PostsModule } from '../posts/posts.module';
     AuthModule,
     UsersModule,
     PostsModule,
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

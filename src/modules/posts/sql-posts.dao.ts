@@ -4,11 +4,11 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { SqlService } from 'src/sql/sql.service';
 import { Connection, RowDataPacket, OkPacket } from 'mysql2/promise';
 import { PostsDao } from './posts-dao.interface';
 import { PostModel } from './models/post.model';
 import { CreatePostDto } from './dtos/add-post.dto';
+import { SqlService } from '../sql/sql.service';
 
 @Injectable()
 export class SqlPostsDao implements PostsDao {

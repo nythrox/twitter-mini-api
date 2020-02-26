@@ -8,11 +8,11 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { AuthRoles } from 'src/auth/decorators/auth-roles.decorator';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dtos/add-post.dto';
 import { PostsFacade } from './posts.facade';
 import { PostDto } from './dtos/post.dto';
+import { AuthRoles } from '../auth/decorators/auth-roles.decorator';
 
 @Controller('posts')
 export class PostsController {

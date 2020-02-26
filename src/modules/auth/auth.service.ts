@@ -11,9 +11,9 @@ import { RefreshDto } from './dto/refresh.dto';
 import { RefreshToken } from './models/refresh-token.model';
 import { RefreshTokenPayload } from './models/refresh-token-payload.model';
 import { LoginDto } from './dto/login.dto';
-import { UsersService } from 'src/users/users.service';
 import { CreateUserDto } from '../users/dtos/create-user.dto';
 import { UserModel } from '../users/models/user.model';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class AuthService {
