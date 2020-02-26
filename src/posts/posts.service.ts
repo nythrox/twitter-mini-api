@@ -16,4 +16,10 @@ export class PostsService {
   async findPostsByUserId(userId: number) {
     return this.postsDao.findPostsFromUser(userId);
   }
+  async findPost(id: number) {
+    return this.postsDao.findPost(id);
+  }
+  async findPostsLikes(id: number) {
+    return this.postsDao.findPostsLikes(id);
+  }
 }

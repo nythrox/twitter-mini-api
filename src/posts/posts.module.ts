@@ -4,9 +4,11 @@ import { SqlPostsDao } from './sql-posts.dao';
 import { PostsFacade } from './posts.facade';
 import { PostsController } from './posts.controller';
 import { AuthModule } from '../auth/auth.module';
+import { UsersModule } from '../users/users.module';
 
 @Module({
   controllers: [PostsController],
+  imports: [UsersModule],
   providers: [
     {
       provide: 'PostsDao',

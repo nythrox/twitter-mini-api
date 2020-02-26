@@ -1,8 +1,8 @@
 export class PostModel {
   constructor(
     public text: string,
-    id: number,
-    userId: number,
-    replyingToPostId: number,
+    public id: number,
+    public userId: number,
+    public replyingToPostId: number,
   ) {}
 }

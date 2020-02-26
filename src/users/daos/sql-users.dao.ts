@@ -24,10 +24,6 @@ export class SqlUsersDao implements UsersDao {
       [id],
     );
     const [res, fields] = await this.db.query<RowDataPacket[]>(sql);
-    // return {
-    //   handle: rows.handle,
-    //   name: rows.name,
-    // };
     try {
       return {
         id: res[0].id,

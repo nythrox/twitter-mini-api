@@ -1,4 +1,9 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { SqlService } from 'src/sql/sql.service';
 import { Connection, RowDataPacket, OkPacket } from 'mysql2/promise';
 import { PostsDao } from './posts-dao.interface';
@@ -11,12 +16,27 @@ export class SqlPostsDao implements PostsDao {
     this.db = sqlService.getDb().promise();
   }
 
+  async findPost(id: number): Promise<PostModel> {
+    const sql = this.db.format('SELECT * FROM Post WHERE id = ?', [id]);
+    const [res, fields] = await this.db.query<RowDataPacket[]>(sql);
+    try {
+      return {
+        id: res[0].id,
+        text: res[0].text,
+        userId: res[0].userId,
+        replyingToPostId: res[0].replyingToPostId,
+      };
+    } catch (e) {
+      throw new HttpException('No post found', HttpStatus.NOT_FOUND);
+    }
+  }
+
   async createPost(userId: number, text: string): Promise<number> {
     const sql = this.db.format(
       'INSERT INTO Post (userId, text) VALUES (?, ?)',
       [userId, text],
     );
-    console.log(sql)
+    console.log(sql);
     try {
       const [res] = await this.db.query<OkPacket>(sql);
       return res.insertId;
@@ -35,6 +55,7 @@ export class SqlPostsDao implements PostsDao {
     const [rows, fields] = await this.db.query<RowDataPacket[]>(sql);
     return rows.map(post => ({
       id: post.id,
+      userId: post.userId,
       name: post.name,
       replyingToPostId: post.replyingToPostId,
       text: post.text,
@@ -47,6 +68,7 @@ export class SqlPostsDao implements PostsDao {
     return rows.map(post => ({
       id: post.id,
       name: post.name,
+      userId: post.userId,
       replyingToPostId: post.replyingToPostId,
       text: post.text,
     }));
@@ -60,4 +82,17 @@ export class SqlPostsDao implements PostsDao {
     const [res, fields] = await this.db.query<RowDataPacket[]>(sql);
   }
   private db: Connection;
+
+  async findPostsLikes(id: number): Promise<number> {
+    const sql = this.db.format('SELECT COUNT(*) FROM `Like` WHERE postId = ?', [
+      id,
+    ]);
+    const [res, fields] = await this.db.query<RowDataPacket[]>(sql);
+    console.log(res);
+    try {
+      return res[0]['COUNT(*)'];
+    } catch (e) {
+      throw new HttpException('No post found', HttpStatus.NOT_FOUND);
+    }
+  }
 }
