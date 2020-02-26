@@ -22,6 +22,7 @@
   "dependencies": {
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
+    "@nestjs/jwt": "^6.1.2",
     "@nestjs/platform-express": "^6.7.2",
     "@nestjsplus/knex": "^1.0.0",
     "@types/mysql2": "github:types/mysql2",
