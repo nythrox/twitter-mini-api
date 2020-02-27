@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { UsersDao } from './interfaces/users-dao.interface';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UserModel } from './models/user.model';
+import { UserDto } from './dtos/user.dto';
 
 @Injectable()
 export class UsersService {

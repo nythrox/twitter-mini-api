@@ -14,6 +14,7 @@ import { LoginDto } from './dto/login.dto';
 import { CreateUserDto } from '../users/dtos/create-user.dto';
 import { UserModel } from '../users/models/user.model';
 import { UsersService } from '../users/users.service';
+import { UserDto } from '../users/dtos/user.dto';
 
 @Injectable()
 export class AuthService {

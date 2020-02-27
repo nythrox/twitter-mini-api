@@ -11,6 +11,7 @@ import { Connection, OkPacket, RowDataPacket } from 'mysql2/promise';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UserModel } from '../models/user.model';
 import { SqlService } from 'src/modules/sql/sql.service';
+import { UserDto } from '../dtos/user.dto';
 @Injectable()
 export class SqlUsersDao implements UsersDao {
   constructor(private sqlService: SqlService) {

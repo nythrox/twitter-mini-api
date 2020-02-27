@@ -5,10 +5,11 @@ import { PostsFacade } from './posts.facade';
 import { PostsController } from './posts.controller';
 import { AuthModule } from '../auth/auth.module';
 import { UsersModule } from '../users/users.module';
+import { MediaModule } from '../media/media.module';
 
 @Module({
   controllers: [PostsController],
-  imports: [forwardRef(() => UsersModule)],
+  imports: [forwardRef(() => UsersModule), MediaModule],
   providers: [
     {
       provide: 'PostsDao',
